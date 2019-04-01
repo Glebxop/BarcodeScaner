@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="my_first">My first!</string>
+    <string name="button1">touch me</string>
+    <string name="button2">tacke a photo</string>
+    <string name="scan">Scan</string>
+</resources>
