@@ -20,13 +20,12 @@ public class MainActivity extends AppCompatActivity {
     private static final int CAMERA_REQUEST = 0;
     private ImageView imageView;
     private Bitmap thumbnailBitmap;
-    private TextView txtView;
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
-            // Фотка сделана, извлекаем картинку
             thumbnailBitmap = (Bitmap) data.getExtras().get("data");
             imageView.setImageBitmap(thumbnailBitmap);
         }
@@ -37,12 +36,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         imageView = (ImageView) findViewById(R.id.imgview);
-        txtView = (TextView) findViewById(R.id.txtContent);
+
 
     }
 
 
-    public void tackeaPhoto(View view) {
+    public void tackedPhoto(View view) {
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(cameraIntent, CAMERA_REQUEST);
     }
@@ -51,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         Barcoder barcoder = new Barcoder();
         String answer = new String();
         answer = barcoder.scan(getApplicationContext(), thumbnailBitmap);
+        TextView txtView = (TextView) findViewById(R.id.txtContent);
         txtView.setText(answer);
 
     }
