@@ -36,8 +36,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         imageView = (ImageView) findViewById(R.id.imgview);
-
-
     }
 
 
@@ -52,6 +50,5 @@ public class MainActivity extends AppCompatActivity {
         answer = barcoder.scan(getApplicationContext(), thumbnailBitmap);
         TextView txtView = (TextView) findViewById(R.id.txtContent);
         txtView.setText(answer);
-
     }
 }
