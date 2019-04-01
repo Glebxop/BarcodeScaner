@@ -18,10 +18,9 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private static final int CAMERA_REQUEST = 0;
-    ImageView imageView;
-    Bitmap thumbnailBitmap;
-
-    TextView txtView;
+    private ImageView imageView;
+    private Bitmap thumbnailBitmap;
+    private TextView txtView;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -38,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         imageView = (ImageView) findViewById(R.id.imgview);
-        txtView=(TextView)findViewById(R.id.txtContent);
+        txtView = (TextView) findViewById(R.id.txtContent);
 
     }
 
@@ -50,14 +49,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void scan(View view) {
         Barcoder barcoder = new Barcoder();
-        String answer="";
-                try {
-                    answer=barcoder.scan(getApplicationContext(), thumbnailBitmap);
-                }catch (RuntimeException e){
-                    txtView.setText("Wrong QR");
-                }
-
-            txtView.setText(answer);
+        String answer = new String();
+        answer = barcoder.scan(getApplicationContext(), thumbnailBitmap);
+        txtView.setText(answer);
 
     }
 }

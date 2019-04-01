@@ -17,8 +17,11 @@ public class Barcoder {
 
         Frame frame = new Frame.Builder().setBitmap(bitmap).build();
         SparseArray<Barcode> barcodes = detector.detect(frame);
-
-        Barcode thisCode = barcodes.valueAt(0);
+        Barcode thisCode = null;
+try {
+   thisCode = barcodes.valueAt(0);
+}catch (Exception e){return "Wrong QR";}
+        
         String result=thisCode.rawValue;
         System.out.println("REEEEEEEESUUULT"+result);
         return result;
